@@ -1,0 +1,27 @@
+version: '3'
+services:  
+  web:
+    stdin_open: true
+    #image: jlima:frontend
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    build: 
+      context: .
+      dockerfile: dockerfile.dev
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./public:/app/public
+      - ./src:/app/src
+  tests:
+    stdin_open: true
+    #image: jlima:frontend
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    build: 
+      context: .
+      dockerfile: dockerfile.dev    
+    volumes:
+      - ./public:/app/public
+      - ./src:/app/src
+    command: ["npm", "run", "test"]
