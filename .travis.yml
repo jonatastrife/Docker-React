@@ -1,0 +1,13 @@
+sudo: required
+language: generic
+#Instala o Docker
+services:
+  - docker
+
+#Executa uma série de comandos antes de executar algo
+before_install:
+  - docker build -t jlima:docker-react -f dockerfile.dev . 
+
+#O que de fato deve ser feito, por que separar?
+script:
+  - docker run -e CI=true jlima/docker-react npm run test
