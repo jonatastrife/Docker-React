@@ -6,7 +6,7 @@ services:
 
 #Executa uma série de comandos antes de executar algo
 before_install:
-  - docker build -t jlima/docker-react -f dockerfile.dev . 
+  - docker build -t jlima/docker-react -f Dockerfile.dev . 
 
 #O que de fato deve ser feito, por que separar?
 script:
